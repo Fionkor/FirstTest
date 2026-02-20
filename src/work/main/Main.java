@@ -4,7 +4,7 @@ import java.util.Random;
 public class Main {
 
     static int avalable;
-    public static void main(String[] args) {
+    public static void main() {
         System.out.println("Do you have this book?");
         checkBook();
 
