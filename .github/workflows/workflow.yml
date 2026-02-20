@@ -2,7 +2,7 @@ name: workflow
 
 on:
   push:
-    branches: [ "Main" ]
+    branches: [ "main" ]
   workflow_dispatch:
 
 
