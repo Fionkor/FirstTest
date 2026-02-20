@@ -5,10 +5,10 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -18,8 +18,13 @@ jobs:
           java-version: '25'
           distribution: 'temurin'
 
-      - name: Build with Maven
-        run: mvn clean compile
+      - name: Compile Java
+        run: |
+          mkdir -p out
+          javac -d out $(find src -name "*.java")
 
-      - name: Run tests with Maven
-        run: mvn test
+      - name: Run tests
+        run: |
+          java -cp out org.junit.platform.console.ConsoleLauncher \
+            --scan-classpath \
+            --details=tree
